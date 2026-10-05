@@ -1,0 +1,248 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-10-04 12:09:36.636844",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "customer_address",
+  "primary_address",
+  "column_break_main",
+  "transaction_date",
+  "expected_installation_date",
+  "sales_person",
+  "contact_person",
+  "section_break_order_info",
+  "project",
+  "order_type",
+  "column_break_order_info",
+  "status",
+  "sales_order",
+  "section_break_items",
+  "order_items",
+  "section_break_totals",
+  "total_amount",
+  "amended_from",
+  "column_break_totals",
+  "discount_percentage",
+  "column_break_nbqv",
+  "discount_amount",
+  "column_break_mnoh",
+  "grand_total",
+  "section_break_installation",
+  "installation_logs"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "RO-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_primary_address",
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Customer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "transaction_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Transaction Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expected_installation_date",
+   "fieldtype": "Date",
+   "label": "Expected Installation Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person"
+  },
+  {
+   "fieldname": "section_break_order_info",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "default": "Standard",
+   "fieldname": "order_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Order Type",
+   "options": "Standard\nCustom\nService",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_order_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nConfirmed\nIn Production\nReady for Installation\nInstalled\nClosed\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "no_copy": 1,
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "order_items",
+   "fieldtype": "Table",
+   "label": "Order Items",
+   "options": "Order Items",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_totals",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount %"
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Grand Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Reno Order",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.primary_address",
+   "fieldname": "primary_address",
+   "fieldtype": "Small Text",
+   "label": "Primary Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nbqv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mnoh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_installation",
+   "fieldtype": "Section Break",
+   "label": "Installation"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "installation_logs",
+   "fieldtype": "Table",
+   "label": "Installation Logs",
+   "options": "Installation Log"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-04 13:25:57.731102",
+ "modified_by": "Administrator",
+ "module": "Reno Order",
+ "name": "Reno Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
