@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "creation": "2026-10-05 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_credentials",
+  "account_sid",
+  "auth_token",
+  "column_break_credentials",
+  "from_number",
+  "default_country_code",
+  "section_behaviour",
+  "notify_on_confirmed",
+  "notify_on_installed",
+  "column_break_behaviour",
+  "request_timeout",
+  "max_retries",
+  "section_trial",
+  "trial_mode",
+  "trial_body_override"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_credentials",
+   "fieldtype": "Section Break",
+   "label": "Credentials"
+  },
+  {
+   "description": "Twilio Account SID (starts with AC...).",
+   "fieldname": "account_sid",
+   "fieldtype": "Data",
+   "label": "Account SID"
+  },
+  {
+   "description": "Stored encrypted. Rotate on the Twilio console if exposed.",
+   "fieldname": "auth_token",
+   "fieldtype": "Password",
+   "label": "Auth Token"
+  },
+  {
+   "fieldname": "column_break_credentials",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Twilio SMS sender, e.g. +17372508034.",
+   "fieldname": "from_number",
+   "fieldtype": "Data",
+   "label": "From Number"
+  },
+  {
+   "default": "+91",
+   "description": "Prepended when the customer phone number has no country code.",
+   "fieldname": "default_country_code",
+   "fieldtype": "Data",
+   "label": "Default Country Code"
+  },
+  {
+   "fieldname": "section_behaviour",
+   "fieldtype": "Section Break",
+   "label": "Notification Behaviour"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_confirmed",
+   "fieldtype": "Check",
+   "label": "Notify Customer on 'Confirmed'"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_installed",
+   "fieldtype": "Check",
+   "label": "Notify Customer on 'Installed'"
+  },
+  {
+   "fieldname": "column_break_behaviour",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "description": "Per-request HTTP timeout (seconds).",
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request Timeout"
+  },
+  {
+   "default": "3",
+   "description": "Total attempts for retryable errors (network / 5xx / rate limit).",
+   "fieldname": "max_retries",
+   "fieldtype": "Int",
+   "label": "Max Retries"
+  },
+  {
+   "collapsible": 1,
+   "description": "Twilio trial accounts cannot send freeform SMS bodies. Enable this to send a Twilio-approved template keyword as the Body while the real business message is still logged in Twilio Message Log for audit.",
+   "fieldname": "section_trial",
+   "fieldtype": "Section Break",
+   "label": "Trial Account Workaround"
+  },
+  {
+   "default": "0",
+   "fieldname": "trial_mode",
+   "fieldtype": "Check",
+   "label": "Trial Mode"
+  },
+  {
+   "default": "sms_appointment_reminders",
+   "depends_on": "trial_mode",
+   "description": "Approved trial template keywords: sms_appointment_reminders, appointment_reminders, shipping_notifications, delivery_notifications, order_notifications, verification_code.",
+   "fieldname": "trial_body_override",
+   "fieldtype": "Data",
+   "label": "Trial Body Override"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-05 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Reno Order",
+ "name": "Twilio Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
