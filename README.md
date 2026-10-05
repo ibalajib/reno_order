@@ -243,6 +243,18 @@ Covered scenarios (16 tests):
 - The `__pycache__` / `*.pyc` / `logs/` / backup paths are ignored by
   `.gitignore` — never commit site data or credentials.
 
+## Demo Videos
+
+Recorded walkthroughs are checked into [`demo_videos/`](demo_videos/).
+GitHub renders them inline — click any link to play in the browser.
+
+| Part | Topic | Video |
+|---|---|---|
+| 3 | ERPNext Integration — Reno Order → Sales Order → Delivery Note → Sales Invoice | [part_3.mp4](demo_videos/part3_erpnext_integration.mp4) |
+| 4 | Manufacturing — BOM, Work Order, Job Card, Stock Entry | [part_4.mp4](demo_videos/part4_manufacturing.mp4) |
+| 5 | Buying — Material Request → RFQ → PO → PR → PI | [part_5.mp4](demo_videos/part5_buying.mp4) |
+
+
 ## License
 
 MIT — see `license.txt`.
