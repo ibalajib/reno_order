@@ -83,7 +83,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "reno_order.install.before_install"
-# after_install = "reno_order.install.after_install"
+after_install = "reno_order.setup.create_reno_order_custom_fields"
+after_migrate = ["reno_order.setup.create_reno_order_custom_fields"]
 
 # Uninstallation
 # ------------
@@ -143,13 +144,14 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Delivery Note": {
+		"before_insert": "reno_order.overrides.propagate_to_delivery_note",
+	},
+	"Sales Invoice": {
+		"before_insert": "reno_order.overrides.propagate_to_sales_invoice",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
