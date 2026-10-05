@@ -19,10 +19,12 @@ Built for Frappe/ERPNext **v16**.
 6. [Workflow & Roles](#workflow--roles)
 7. [REST API](#rest-api)
 8. [Testing](#testing)
-9. [Assumptions](#assumptions)
-10. [Known Limitations](#known-limitations)
-11. [Development Notes](#development-notes)
-12. [License](#license)
+9. [CI/CD](#cicd)
+10. [Production & Server Knowledge](#production--server-knowledge)
+11. [Assumptions](#assumptions)
+12. [Known Limitations](#known-limitations)
+13. [Development Notes](#development-notes)
+14. [License](#license)
 
 ---
 
@@ -203,6 +205,30 @@ Covered scenarios (16 tests):
 - API authentication, authorization, and status-transition guards.
 - Installed-status notification enqueue (mocked — no real SMS).
 - `order_type` patch backfill idempotency.
+
+## CI/CD
+
+Two GitHub Actions workflows live in [`.github/workflows/`](.github/workflows):
+
+- **CI** (`ci.yml`) — triggered on every push to `develop` / `main` and on
+  every PR. Boots Redis, MariaDB 10.6, Python 3.10, Node 18, installs
+  Frappe + ERPNext + Reno Order, and runs the test suite.
+- **Linters** (`linter.yml`) — triggered on every PR. Runs `pre-commit`
+  (ruff, eslint, prettier, pyupgrade), Frappe Semgrep rules, and
+  `pip-audit`.
+
+Promotion flow (`feature → develop → main → v<x.y.z>`), environment
+staging strategy, and rollback procedures for code-level, migration-level,
+and partial-failure scenarios are documented in
+[`docs/cicd.md`](docs/cicd.md).
+
+## Production & Server Knowledge
+
+Operational knowledge for Frappe Cloud and self-hosted ERPNext — the
+role of Nginx, Gunicorn, Supervisor, Redis, MariaDB, Workers, and the
+Scheduler, plus a troubleshooting matrix for 502 Bad Gateway, worker
+backlog, scheduler stall, high CPU, slow queries, disk-full, and failed
+migrations — is documented in [`docs/production.md`](docs/production.md).
 
 ## Assumptions
 
